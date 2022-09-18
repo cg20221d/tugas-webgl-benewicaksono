@@ -3,7 +3,7 @@ function main() {
   var gl = kanvas.getContext("webgl");
 
   var vertices = [
-    // Num9
+    // Num 9
     -0.25, 0.6,
     -0.4, 0.4,
     -0.6, 0.4,
@@ -15,14 +15,32 @@ function main() {
     -0.4, 0.15,
     -0.6, 0.15,
     -0.75, 0.3,
-    // Num7
+
+    // Num 7
     0.25, 0.8,
     0.75, 0.8,
     0.55, 0.5,
     0.3, 0.5,
     0.75, 0.5,
     0.55, 0.5,
-    0.3, 0.15
+    0.3, 0.15,
+
+    // Char N
+    -0.75, -0.8,
+    -0.75, -0.15,
+    -0.25, -0.8,
+    -0.25, -0.15,
+
+    // Char O
+    0.75, -0.70,
+    0.75, -0.25,
+    0.65, -0.15,
+    0.35, -0.15,
+    0.25, -0.25,
+    0.25, -0.70,
+    0.35, -0.8,
+    0.65, -0.8,
+    
   ];
 
   var buffer = gl.createBuffer();
@@ -74,4 +92,8 @@ function main() {
   gl.drawArrays(gl.LINE_STRIP, 0, 11);
   // Num 7
   gl.drawArrays(gl.LINE_STRIP, 11, 7);
+  // Char N
+  gl.drawArrays(gl.LINE_STRIP, 18, 4);
+  // Char O
+  gl.drawArrays(gl.LINE_LOOP, 22, 8);
 }
