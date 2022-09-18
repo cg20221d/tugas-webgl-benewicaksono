@@ -3,44 +3,49 @@ function main() {
   var gl = kanvas.getContext("webgl");
 
   var vertices = [
-    // Num 9
-    -0.25, 0.6,
-    -0.4, 0.4,
-    -0.6, 0.4,
-    -0.75, 0.6,
-    -0.6, 0.8,
-    -0.4, 0.8,
-    -0.25, 0.6,
-    -0.25, 0.3,
-    -0.4, 0.15,
-    -0.6, 0.15,
-    -0.75, 0.3,
+    // Num 9 Outer
+    -0.35, 0.4,
+    -0.7, 0.4,
+    -0.8, 0.5,
+    -0.8, 0.7,
+    -0.7, 0.8,
+    -0.35, 0.8,
+    -0.25, 0.7,
+    -0.25, 0.25,
+    -0.35, 0.15,
+    -0.7, 0.15,
+    -0.8, 0.25,
+    -0.8, 0.35,
+    -0.7, 0.35,
+    -0.7, 0.3,
+    -0.65, 0.25,
+    -0.4, 0.25,
+    -0.35, 0.3,
+    // Num 9 Inner
+    -0.35, 0.5,
+    -0.65, 0.5,
+    -0.7, 0.55,
+    -0.7, 0.65,
+    -0.65, 0.7,
+    -0.4, 0.7,
+    -0.35, 0.65,
 
     // Num 7
     0.25, 0.8,
-    0.75, 0.8,
-    0.55, 0.5,
+    0.7, 0.8,
+    0.7, 0.7,
+    0.58, 0.5,
+    0.7, 0.5,
+    0.7, 0.4,
+    0.53, 0.4,
+    0.38, 0.15,
+    0.25, 0.15,
+    0.4, 0.4,
+    0.3, 0.4,
     0.3, 0.5,
-    0.75, 0.5,
-    0.55, 0.5,
-    0.3, 0.15,
-
-    // Char N
-    -0.75, -0.8,
-    -0.75, -0.15,
-    -0.25, -0.8,
-    -0.25, -0.15,
-
-    // Char O
-    0.75, -0.70,
-    0.75, -0.25,
-    0.65, -0.15,
-    0.35, -0.15,
-    0.25, -0.25,
-    0.25, -0.70,
-    0.35, -0.8,
-    0.65, -0.8,
-    
+    0.45, 0.5,
+    0.58, 0.7,
+    0.25, 0.7
   ];
 
   var buffer = gl.createBuffer();
@@ -67,7 +72,7 @@ function main() {
     void main() {
         float r = 0.0;
         float g = 0.0;
-        float b = 1.0;
+        float b = 0.0;
         gl_FragColor = vec4(r, g, b, 1.0);
     }`;
   var fragmentShaderObject = gl.createShader(gl.FRAGMENT_SHADER);
@@ -84,16 +89,14 @@ function main() {
   gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(aPosition);
 
-  gl.clearColor(1.0, 0.65, 0.0, 1.0);
+  gl.clearColor(1.0, 1.0, 1.0, 1.0);
   //          Merah, Hijau, Biru, Transparansi
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-    // Num 9
-  gl.drawArrays(gl.LINE_STRIP, 0, 11);
+  // Num 9
+  gl.drawArrays(gl.LINE_LOOP, 0, 17);
+  gl.drawArrays(gl.LINE_LOOP, 17, 7);
+
   // Num 7
-  gl.drawArrays(gl.LINE_STRIP, 11, 7);
-  // Char N
-  gl.drawArrays(gl.LINE_STRIP, 18, 4);
-  // Char O
-  gl.drawArrays(gl.LINE_LOOP, 22, 8);
+  gl.drawArrays(gl.LINE_LOOP, 24, 15);
 }
