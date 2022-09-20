@@ -68,6 +68,24 @@ function main() {
     -0.6, -0.8,
   ];
 
+  // Char O
+  for (var i = 0.0; i <= 360; i += 1) {
+    // degrees to radians
+    var j = i * Math.PI / 180;
+    // X Y Z
+    var vertIn = [
+      Math.sin(j) * 0.15 + 0.5,
+      Math.cos(j) * 0.25 - 0.45,
+    ];
+
+    var vertOut = [
+      Math.sin(j) * 0.3 + 0.5,
+      Math.cos(j) * 0.35 - 0.45,
+    ];
+    vertices = vertices.concat(vertIn);
+    vertices = vertices.concat(vertOut);
+  }
+
   var buffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
@@ -109,7 +127,7 @@ function main() {
   gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(aPosition);
 
-  gl.clearColor(0.0, 1.0, 1.0, 1.0);
+  gl.clearColor(1.0, 1.0, 1.0, 1);
   //          Merah, Hijau, Biru, Transparansi
   gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -126,4 +144,9 @@ function main() {
   gl.drawArrays(gl.TRIANGLE_FAN, 43, 4);
   gl.drawArrays(gl.TRIANGLE_FAN, 45, 5);
   gl.drawArrays(gl.TRIANGLE_FAN, 50, 4);
+
+  // Char O
+
+  console.log(vertices)
+  gl.drawArrays(gl.TRIANGLE_STRIP, 54, (vertices.length - 107) / 2);
 }
