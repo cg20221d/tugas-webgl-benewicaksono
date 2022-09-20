@@ -45,7 +45,27 @@ function main() {
     0.3, 0.5,
     0.45, 0.5,
     0.58, 0.7,
-    0.25, 0.7
+    0.25, 0.7,
+
+    // Char N
+    -0.8, -0.8,
+    -0.7, -0.8,
+    -0.6, -0.15,
+    -0.7, -0.15,   
+
+    -0.25, -0.8,
+    -0.35, -0.8,
+    -0.25, -0.15,
+    -0.15, -0.15,
+
+    -0.35, -0.15,
+    -0.35, -0.25,
+    -0.2, -0.25,
+
+    -0.8, -0.8,
+    -0.7, -0.7,
+    -0.6, -0.7,
+    -0.6, -0.8,
   ];
 
   var buffer = gl.createBuffer();
@@ -89,7 +109,7 @@ function main() {
   gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(aPosition);
 
-  gl.clearColor(1.0, 1.0, 1.0, 1.0);
+  gl.clearColor(0.0, 1.0, 1.0, 1.0);
   //          Merah, Hijau, Biru, Transparansi
   gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -99,4 +119,11 @@ function main() {
 
   // Num 7
   gl.drawArrays(gl.LINE_LOOP, 24, 15);
+
+  // Char N
+  gl.drawArrays(gl.TRIANGLE_FAN, 39, 4);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 41, 4);
+  gl.drawArrays(gl.TRIANGLE_FAN, 43, 4);
+  gl.drawArrays(gl.TRIANGLE_FAN, 45, 5);
+  gl.drawArrays(gl.TRIANGLE_FAN, 50, 4);
 }
