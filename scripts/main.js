@@ -2,222 +2,295 @@ function main() {
   var kanvas = document.getElementById("kanvas");
   var gl = kanvas.getContext("webgl");
 
-  var vertices = [
-    // Num 9 Outer Front
-    -0.35, 0.4, 1.0,
-    -0.7, 0.4, 1.0,
-    -0.8, 0.5, 1.0,
-    -0.8, 0.7, 1.0,
-    -0.7, 0.8, 1.0,
-    -0.35, 0.8, 1.0,
-    -0.25, 0.7, 1.0,
-    -0.25, 0.25, 1.0,
-    -0.35, 0.15, 1.0,
-    -0.7, 0.15, 1.0,
-    -0.8, 0.25, 1.0,
-    -0.8, 0.35, 1.0,
-    -0.7, 0.35, 1.0,
-    -0.7, 0.3, 1.0,
-    -0.65, 0.25, 1.0,
-    -0.4, 0.25, 1.0,
-    -0.35, 0.3, 1.0,
-
-    // Num 9 Outer Back
-    -0.35, 0.4, -1.0,
-    -0.7, 0.4, -1.0,
-    -0.8, 0.5, -1.0,
-    -0.8, 0.7, -1.0,
-    -0.7, 0.8, -1.0,
-    -0.35, 0.8, -1.0,
-    -0.25, 0.7, -1.0,
-    -0.25, 0.25, -1.0,
-    -0.35, 0.15, -1.0,
-    -0.7, 0.15, -1.0,
-    -0.8, 0.25, -1.0,
-    -0.8, 0.35, -1.0,
-    -0.7, 0.35, -1.0,
-    -0.7, 0.3, -1.0,
-    -0.65, 0.25, -1.0,
-    -0.4, 0.25, -1.0,
-    -0.35, 0.3, -1.0,
-
-    // Num 9 Inner Front
-    -0.35, 0.5, 1.0,
-    -0.65, 0.5, 1.0,
-    -0.7, 0.55, 1.0,
-    -0.7, 0.65, 1.0,
-    -0.65, 0.7, 1.0,
-    -0.4, 0.7, 1.0,
-    -0.35, 0.65, 1.0,
-
-    // Num 9 Inner Back
-    -0.35, 0.5, -1.0,
-    -0.65, 0.5, -1.0,
-    -0.7, 0.55, -1.0,
-    -0.7, 0.65, -1.0,
-    -0.65, 0.7, -1.0,
-    -0.4, 0.7, -1.0,
-    -0.35, 0.65, -1.0,
-
-    // Num 7 Front
-    0.25, 0.8, 1.0,
-    0.7, 0.8, 1.0,
-    0.7, 0.7, 1.0,
-    0.58, 0.5, 1.0,
-    0.7, 0.5, 1.0,
-    0.7, 0.4, 1.0,
-    0.53, 0.4, 1.0,
-    0.38, 0.15, 1.0,
-    0.25, 0.15, 1.0,
-    0.4, 0.4, 1.0,
-    0.3, 0.4, 1.0,
-    0.3, 0.5, 1.0,
-    0.45, 0.5, 1.0,
-    0.58, 0.7, 1.0,
-    0.25, 0.7, 1.0,
-
-    // Num 7 Back
-    0.25, 0.8, -1.0,
-    0.7, 0.8, -1.0,
-    0.7, 0.7, -1.0,
-    0.58, 0.5, -1.0,
-    0.7, 0.5, -1.0,
-    0.7, 0.4, -1.0,
-    0.53, 0.4, -1.0,
-    0.38, 0.15, -1.0,
-    0.25, 0.15, -1.0,
-    0.4, 0.4, -1.0,
-    0.3, 0.4, -1.0,
-    0.3, 0.5, -1.0,
-    0.45, 0.5, -1.0,
-    0.58, 0.7, -1.0,
-    0.25, 0.7, -1.0,
-
-    // Char N Front
-    -0.8, -0.8, 1.0,
-    -0.7, -0.8, 1.0,
-    -0.6, -0.15, 1.0,
-    -0.7, -0.15, 1.0,
-
-    -0.25, -0.8, 1.0,
-    -0.35, -0.8, 1.0,
-    -0.25, -0.15, 1.0,
-    -0.15, -0.15, 1.0,
-
-    -0.35, -0.15, 1.0,
-    -0.35, -0.25, 1.0,
-    -0.2, -0.25, 1.0,
-
-    -0.8, -0.8, 1.0,
-    -0.7, -0.7, 1.0,
-    -0.6, -0.7, 1.0,
-    -0.6, -0.8, 1.0,
-
-    // Char N Back
-    -0.8, -0.8, -1.0,
-    -0.7, -0.8, -1.0,
-    -0.6, -0.15, -1.0,
-    -0.7, -0.15, -1.0,
-
-    -0.25, -0.8, -1.0,
-    -0.35, -0.8, -1.0,
-    -0.25, -0.15, -1.0,
-    -0.15, -0.15, -1.0,
-
-    -0.35, -0.15, -1.0,
-    -0.35, -0.25, -1.0,
-    -0.2, -0.25, -1.0,
-
-    -0.8, -0.8, -1.0,
-    -0.7, -0.7, -1.0,
-    -0.6, -0.7, -1.0,
-    -0.6, -0.8, -1.0,
+  var vertices9 = [
+    // Num 9 Outer Front    // White
+    -0.35, 0.4, 0.0,        1, 1, 1,    // Index:  0
+    -0.7, 0.4, 0.0,         1, 1, 1,    // Index:  1
+    -0.8, 0.5, 0.0,         1, 1, 1,    // Index:  2
+    -0.8, 0.7, 0.0,         1, 1, 1,    // Index:  3
+    -0.7, 0.8, 0.0,         1, 1, 1,    // Index:  4
+    -0.35, 0.8, 0.0,        1, 1, 1,    // Index:  5
+    -0.25, 0.7, 0.0,        1, 1, 1,    // Index:  6
+    -0.25, 0.25, 0.0,       1, 1, 1,    // Index:  7
+    -0.35, 0.15, 0.0,       1, 1, 1,    // Index:  8
+    -0.7, 0.15, 0.0,        1, 1, 1,    // Index:  9
+    -0.8, 0.25, 0.0,        1, 1, 1,    // Index:  10
+    -0.8, 0.35, 0.0,        1, 1, 1,    // Index:  11
+    -0.7, 0.35, 0.0,        1, 1, 1,    // Index:  12
+    -0.7, 0.3, 0.0,         1, 1, 1,    // Index:  13
+    -0.65, 0.25, 0.0,       1, 1, 1,    // Index:  14
+    -0.4, 0.25, 0.0,        1, 1, 1,    // Index:  15
+    -0.35, 0.3, 0.0,        1, 1, 1,    // Index:  16
   ];
 
-  // Char O
-  for (var i = 0.0; i <= 360; i += 1) {
-    // degrees to radians
-    var j = i * Math.PI / 180;
-    // X Y Z
-    var vertIn = [
-      Math.sin(j) * 0.15 + 0.5,
-      Math.cos(j) * 0.25 - 0.45,
-    ];
+  var indices9 = [
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10, 11,
+    12, 13, 14,  12, 14, 15,
+    16, 17, 18,  16, 18, 19,
+    20, 21, 22,  20, 22, 23,
+  ];
 
-    var vertOut = [
-      Math.sin(j) * 0.3 + 0.5,
-      Math.cos(j) * 0.35 - 0.45,
-    ];
-    vertices = vertices.concat(vertIn);
-    vertices = vertices.concat(vertOut);
-  }
+  var vertices7 = [
+    // Num 7 Outer Front    // White
+    0.25, 0.8, 0.0,         1, 1, 1,    // Index:  0
+    0.7, 0.8, 0.0,          1, 1, 1,    // Index:  1
+    0.7, 0.7, 0.0,          1, 1, 1,    // Index:  2
+    0.58, 0.5, 0.0,         1, 1, 1,    // Index:  3
+    0.7, 0.5, 0.0,          1, 1, 1,    // Index:  4
+    0.7, 0.4, 0.0,          1, 1, 1,    // Index:  5
+    0.53, 0.4, 0.0,         1, 1, 1,    // Index:  6
+    0.38, 0.15, 0.0,        1, 1, 1,    // Index:  7
+    0.25, 0.15, 0.0,        1, 1, 1,    // Index:  8
+    0.4, 0.4, 0.0,          1, 1, 1,    // Index:  9
+    0.3, 0.4, 0.0,          1, 1, 1,    // Index:  10
+    0.3, 0.5, 0.0,          1, 1, 1,    // Index:  11
+    0.45, 0.5, 0.0,         1, 1, 1,    // Index:  12
+    0.58, 0.7, 0.0,         1, 1, 1,    // Index:  13
+    0.25, 0.7, 0.0,         1, 1, 1,    // Index:  14
+  ]
 
-  var buffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+  var indices7 = [
+    0, 1, 2,     0, 2, 3,     // Face A
+    4, 5, 6,     4, 6, 7,     // Face B
+    8, 9, 10,    8, 10, 11,   // Face C
+    12, 13, 14,  12, 14, 15,  // Face D
+    16, 17, 18,  16, 18, 19,  // Face E
+    20, 21, 22,  20, 22, 23   // Face F     
+  ];
+
+  var objects = [
+    {
+      name: '9',
+      vertices: vertices9,
+      indices: indices9,
+      length: 16,
+      type: gl.LINE_LOOP,
+    },
+    {
+      name: '7',
+      vertices: vertices7,
+      indices: indices7,
+      length: 16,
+      type: gl.LINE_LOOP,
+    },
+  ]
+
+  // var buffer = gl.createBuffer();
+  // gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+  // var indexBuffer = gl.createBuffer();
+  // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+  // gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
   // Vertex shader
-  var vertexShaderCode = `
-    attribute vec3 aPosition;
-    void main() {
-        float x = aPosition.x;
-        float y = aPosition.y;
-        float z = aPosition.z;
-        gl_PointSize = 10.0;
-        gl_Position = vec4(x, y, z, 1.0);
-    }`;
-
+  var vertexShaderCode =  `
+  attribute vec3 aPosition;   // Sebelumnya vec2, makanya tidak tergambar kubus :D
+  attribute vec3 aColor;
+  uniform mat4 uModel;
+  uniform mat4 uView;
+  uniform mat4 uProjection;
+  varying vec3 vColor;
+  void main() {
+      gl_Position = uProjection * uView * uModel * vec4(aPosition, 1.0);
+      vColor = aColor;
+  }
+  `;
   var vertexShaderObject = gl.createShader(gl.VERTEX_SHADER);
   gl.shaderSource(vertexShaderObject, vertexShaderCode);
-  gl.compileShader(vertexShaderObject);
+  gl.compileShader(vertexShaderObject);   // sampai sini sudah jadi .o
 
   // Fragment shader
   var fragmentShaderCode = `
-    precision mediump float;
-    void main() {
-        float r = 0.0;
-        float g = 0.0;
-        float b = 0.0;
-        gl_FragColor = vec4(r, g, b, 1.0);
-    }`;
+  precision mediump float;
+  varying vec3 vColor;
+  void main() {
+      gl_FragColor = vec4(vColor, 1.0);
+  }
+  `;
   var fragmentShaderObject = gl.createShader(gl.FRAGMENT_SHADER);
   gl.shaderSource(fragmentShaderObject, fragmentShaderCode);
-  gl.compileShader(fragmentShaderObject);
+  gl.compileShader(fragmentShaderObject);   // sampai sini sudah jadi .o
 
-  var shaderProgram = gl.createProgram();
+  var shaderProgram = gl.createProgram(); // wadah dari executable (.exe)
   gl.attachShader(shaderProgram, vertexShaderObject);
   gl.attachShader(shaderProgram, fragmentShaderObject);
   gl.linkProgram(shaderProgram);
   gl.useProgram(shaderProgram);
 
+  // Variabel lokal
+  var theta = 0.0;
+  var freeze = false;
+  var frameWidth = 9;
+  var horizontalSpeed = 0.0097; // NRP akhir 097
+  var verticalSpeed = 0.0;
+  var horizontalDelta = 0.0;
+  var verticalDelta = 0.0;
+  var scaleDelta = 0.0;
+  var scaleSpeed = 0.0097;
+
+  // Variabel pointer ke GLSL
+  var uModel = gl.getUniformLocation(shaderProgram, "uModel");
+  // View
+  var cameraX = 0.0;
+  var cameraZ = 7.5;
+  var uView = gl.getUniformLocation(shaderProgram, "uView");
+  var view = mat4.create();
+  mat4.lookAt(
+      view,
+      [cameraX, 0.0, cameraZ],    // the location of the eye or the camera
+      [cameraX, 0.0, -10],        // the point where the camera look at
+      [0.0, 1.0, 0.0]
+  );
+  // Projection
+  var uProjection = gl.getUniformLocation(shaderProgram, "uProjection");
+  var perspective = mat4.create();
+  
+  mat4.perspective(perspective, Math.PI/3, 1.0, 0.5, 50);
+
+  function drawing (vertices, indices, start=0, end, glType=gl.LINE_LOOP) { 
+    const buffer = gl.createBuffer();
+    const indexBuffer = gl.createBuffer();
+
+    // bind buffer
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+    
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+    
+    const aPosition = gl.getAttribLocation(shaderProgram, 'aPosition');
+    const aColor = gl.getAttribLocation(shaderProgram, 'aColor');
+    // variable pointer ke GLSL
+    gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 
+        6 * Float32Array.BYTES_PER_ELEMENT, 
+        0 * Float32Array.BYTES_PER_ELEMENT
+    );
+    gl.enableVertexAttribArray(aPosition);
+    
+    // gl.drawArrays(glType, start, end);
+    
+    gl.vertexAttribPointer(aColor, 3, gl.FLOAT, false, 
+        6 * Float32Array.BYTES_PER_ELEMENT, 
+        3 * Float32Array.BYTES_PER_ELEMENT 
+        );
+    gl.enableVertexAttribArray(aColor);
+    
+    gl.drawElements(glType, indices.length - 11, gl.UNSIGNED_SHORT, 0);
+  }
+
+  const animate9 = () =>{
+    var model = mat4.create();
+
+    if (horizontalDelta >= (frameWidth/2) || horizontalDelta <= (-frameWidth/2+1)) {
+        horizontalSpeed = horizontalSpeed * -1;
+    }
+    horizontalDelta += horizontalSpeed;
+    mat4.translate(model, model, [horizontalDelta, verticalDelta, 0.0]);
+    
+    var uModel = gl.getUniformLocation(shaderProgram, "uModel");
+    var uView = gl.getUniformLocation(shaderProgram, "uView");
+    var uProjection = gl.getUniformLocation(shaderProgram, "uProjection"); 
+    gl.uniformMatrix4fv(uModel,false, model);
+    gl.uniformMatrix4fv(uView, false, view);
+    gl.uniformMatrix4fv(uProjection, false, perspective);
+    drawing(objects[0].vertices, objects[0].indices, 0, objects[0].length, objects[0].type);
+  }
+
+  const animate7 = () =>{
+    var model = mat4.create();
+
+    if (scaleDelta >= 2 || scaleDelta <= -0.5) {
+        scaleSpeed = scaleSpeed * -1;
+    }
+    scaleDelta += scaleSpeed;
+    mat4.translate(model, model, [0, 0, scaleDelta]);
+    
+    var uModel = gl.getUniformLocation(shaderProgram, "uModel");
+    var uView = gl.getUniformLocation(shaderProgram, "uView");
+    var uProjection = gl.getUniformLocation(shaderProgram, "uProjection"); 
+    gl.uniformMatrix4fv(uModel,false, model);
+    gl.uniformMatrix4fv(uView, false, view);
+    gl.uniformMatrix4fv(uProjection, false, perspective);
+    drawing(objects[1].vertices, objects[1].indices, 0, objects[1].length, objects[1].type);
+}
+
+  // Kita mengajari GPU bagaimana caranya mengoleksi
+  //  nilai posisi dari ARRAY_BUFFER
+  //  untuk setiap verteks yang sedang diproses
   var aPosition = gl.getAttribLocation(shaderProgram, "aPosition");
-  gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 
+      6 * Float32Array.BYTES_PER_ELEMENT, 
+      0);
   gl.enableVertexAttribArray(aPosition);
+  var aColor = gl.getAttribLocation(shaderProgram, "aColor");
+  gl.vertexAttribPointer(aColor, 3, gl.FLOAT, false, 
+      6 * Float32Array.BYTES_PER_ELEMENT, 
+      3 * Float32Array.BYTES_PER_ELEMENT);
+  gl.enableVertexAttribArray(aColor);
 
-  gl.clearColor(1.0, 1.0, 1.0, 1);
+  // Grafika interaktif
+  // Tetikus
+  function onMouseClick(event) {
+      freeze = !freeze;
+  }
+  document.addEventListener("click", onMouseClick);
+  // Papan ketuk
+  function onKeydown(event) {
+      if (event.keyCode == 32) freeze = !freeze;  // spasi
+      // Gerakan horizontal: a ke kiri, d ke kanan
+      if (event.keyCode == 65) {  // a
+          horizontalSpeed = -0.01;
+      } else if (event.keyCode == 68) {   // d
+          horizontalSpeed = 0.01;
+      }
+      // Gerakan vertikal: w ke atas, s ke bawah
+      if (event.keyCode == 87) {  // w
+          verticalSpeed = -0.01;
+      } else if (event.keyCode == 83) {   // s
+          verticalSpeed = 0.01;
+      }
+  }
+  function onKeyup(event) {
+      if (event.keyCode == 32) freeze = !freeze;
+      if (event.keyCode == 65 || event.keyCode == 68) horizontalSpeed = 0.0;
+      if (event.keyCode == 87 || event.keyCode == 83) verticalSpeed = 0.0;
+  }
+  document.addEventListener("keydown", onKeydown);
+  document.addEventListener("keyup", onKeyup);
 
-  gl.clear(gl.COLOR_BUFFER_BIT);
-
-  // Num 9 Outer
-  gl.drawArrays(gl.LINE_LOOP, 0, 17);
-  gl.drawArrays(gl.LINE_LOOP, 17, 17);
-
-  // Num 9 Inner
-  gl.drawArrays(gl.LINE_LOOP, 34, 7);
-  gl.drawArrays(gl.LINE_LOOP, 41, 7);
-
-  // Num 7
-  gl.drawArrays(gl.LINE_LOOP, 48, 15);
-  gl.drawArrays(gl.LINE_LOOP, 63, 15);
-
-  // Char N
-  gl.drawArrays(gl.TRIANGLE_FAN, 78, 4);
-  gl.drawArrays(gl.TRIANGLE_STRIP, 80, 4);
-  gl.drawArrays(gl.TRIANGLE_FAN, 82, 4);
-  gl.drawArrays(gl.TRIANGLE_FAN, 90, 5);
-  gl.drawArrays(gl.TRIANGLE_FAN, 85, 4);
-
-  // Char O
-  // console.log(vertices)
-  gl.drawArrays(gl.TRIANGLE_STRIP, 108, (vertices.length - 107) / 2);
+  function render() {
+      gl.enable(gl.DEPTH_TEST);
+      gl.clearColor(1.0,      0.65,    0.0,    1.0);  // Oranye
+      //            Merah     Hijau   Biru    Transparansi
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      if (!freeze) {
+          theta += 0.005;
+      }
+      horizontalDelta += horizontalSpeed;
+      verticalDelta -= verticalSpeed;
+      var model = mat4.create(); // Membuat matriks identitas
+      mat4.translate(
+          model, model, [horizontalDelta, verticalDelta, 0.0]
+      );
+      mat4.rotateX(
+          model, model, theta
+      );
+      mat4.rotateY(
+          model, model, theta
+      );
+      mat4.rotateZ(
+          model, model, theta
+      );
+      gl.uniformMatrix4fv(uModel, false, model);
+      gl.uniformMatrix4fv(uView, false, view);
+      gl.uniformMatrix4fv(uProjection, false, perspective);
+      // gl.drawElements(gl.LINE_LOOP, indices.length, gl.UNSIGNED_SHORT, 0);
+      animate9();
+      animate7();
+      requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
 }
