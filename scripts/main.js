@@ -5,22 +5,26 @@ function main() {
   var vertices9 = [
     // Num 9 Outer Front    // White
     -0.35, 0.4, 0.0,        1, 1, 1,    // Index:  0
-    -0.7, 0.4, 0.0,         1, 1, 1,    // Index:  1
-    -0.8, 0.5, 0.0,         1, 1, 1,    // Index:  2
-    -0.8, 0.7, 0.0,         1, 1, 1,    // Index:  3
-    -0.7, 0.8, 0.0,         1, 1, 1,    // Index:  4
-    -0.35, 0.8, 0.0,        1, 1, 1,    // Index:  5
-    -0.25, 0.7, 0.0,        1, 1, 1,    // Index:  6
-    -0.25, 0.25, 0.0,       1, 1, 1,    // Index:  7
-    -0.35, 0.15, 0.0,       1, 1, 1,    // Index:  8
-    -0.7, 0.15, 0.0,        1, 1, 1,    // Index:  9
-    -0.8, 0.25, 0.0,        1, 1, 1,    // Index:  10
-    -0.8, 0.35, 0.0,        1, 1, 1,    // Index:  11
-    -0.7, 0.35, 0.0,        1, 1, 1,    // Index:  12
-    -0.7, 0.3, 0.0,         1, 1, 1,    // Index:  13
-    -0.65, 0.25, 0.0,       1, 1, 1,    // Index:  14
-    -0.4, 0.25, 0.0,        1, 1, 1,    // Index:  15
-    -0.35, 0.3, 0.0,        1, 1, 1,    // Index:  16
+    -0.35, 0.4, 0.0,        1, 1, 1,    // Index:  1
+    -0.7, 0.4, 0.0,         1, 1, 1,    // Index:  2
+    -0.8, 0.5, 0.0,         1, 1, 1,    // Index:  3
+    -0.8, 0.7, 0.0,         1, 1, 1,    // Index:  4
+    -0.8, 0.7, 0.0,         1, 1, 1,    // Index:  5
+    -0.7, 0.8, 0.0,         1, 1, 1,    // Index:  6
+    -0.35, 0.8, 0.0,        1, 1, 1,    // Index:  7
+    -0.25, 0.7, 0.0,        1, 1, 1,    // Index:  8
+    -0.25, 0.7, 0.0,        1, 1, 1,    // Index:  9
+    -0.25, 0.25, 0.0,       1, 1, 1,    // Index:  10
+    -0.35, 0.15, 0.0,       1, 1, 1,    // Index:  11
+    -0.7, 0.15, 0.0,        1, 1, 1,    // Index:  12
+    -0.7, 0.15, 0.0,        1, 1, 1,    // Index:  13
+    -0.8, 0.25, 0.0,        1, 1, 1,    // Index:  14
+    -0.8, 0.35, 0.0,        1, 1, 1,    // Index:  15
+    -0.7, 0.35, 0.0,        1, 1, 1,    // Index:  16
+    -0.7, 0.3, 0.0,         1, 1, 1,    // Index:  17
+    -0.65, 0.25, 0.0,       1, 1, 1,    // Index:  18
+    -0.4, 0.25, 0.0,        1, 1, 1,    // Index:  19
+    -0.35, 0.3, 0.0,        1, 1, 1,    // Index:  20
   ];
 
   var indices9 = [
@@ -30,34 +34,109 @@ function main() {
     12, 13, 14,  12, 14, 15,
     16, 17, 18,  16, 18, 19,
     20, 21, 22,  20, 22, 23,
+    24, 25, 26,  24, 26, 27,
+  ];
+
+  var vertices91 = [
+    // Num 9 Inner Front    // White
+    -0.35, 0.5, 0.0,        1, 1, 1,    // Index:  0
+    -0.35, 0.5, 0.0,        1, 1, 1,    // Index:  1
+    -0.65, 0.5, 0.0,        1, 1, 1,    // Index:  1
+    -0.7, 0.55, 0.0,        1, 1, 1,    // Index:  2
+    -0.7, 0.65, 0.0,        1, 1, 1,    // Index:  3
+    -0.7, 0.65, 0.0,        1, 1, 1,    // Index:  3
+    -0.65, 0.7, 0.0,        1, 1, 1,    // Index:  4
+    -0.4, 0.7, 0.0,         1, 1, 1,    // Index:  5
+    -0.35, 0.65, 0.0,       1, 1, 1,    // Index:  6
+  ];
+
+  var indices91 = [
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10, 11,
+    12, 13, 14,  12, 15, 16
   ];
 
   var vertices7 = [
     // Num 7 Outer Front    // White
     0.25, 0.8, 0.0,         1, 1, 1,    // Index:  0
-    0.7, 0.8, 0.0,          1, 1, 1,    // Index:  1
-    0.7, 0.7, 0.0,          1, 1, 1,    // Index:  2
-    0.58, 0.5, 0.0,         1, 1, 1,    // Index:  3
-    0.7, 0.5, 0.0,          1, 1, 1,    // Index:  4
-    0.7, 0.4, 0.0,          1, 1, 1,    // Index:  5
-    0.53, 0.4, 0.0,         1, 1, 1,    // Index:  6
-    0.38, 0.15, 0.0,        1, 1, 1,    // Index:  7
-    0.25, 0.15, 0.0,        1, 1, 1,    // Index:  8
-    0.4, 0.4, 0.0,          1, 1, 1,    // Index:  9
-    0.3, 0.4, 0.0,          1, 1, 1,    // Index:  10
-    0.3, 0.5, 0.0,          1, 1, 1,    // Index:  11
-    0.45, 0.5, 0.0,         1, 1, 1,    // Index:  12
-    0.58, 0.7, 0.0,         1, 1, 1,    // Index:  13
-    0.25, 0.7, 0.0,         1, 1, 1,    // Index:  14
+    0.25, 0.8, 0.0,         1, 1, 1,    // Index:  1
+    0.7, 0.8, 0.0,          1, 1, 1,    // Index:  2
+    0.7, 0.7, 0.0,          1, 1, 1,    // Index:  3
+    0.58, 0.5, 0.0,         1, 1, 1,    // Index:  4
+    0.7, 0.5, 0.0,          1, 1, 1,    // Index:  5
+    0.7, 0.5, 0.0,          1, 1, 1,    // Index:  6
+    0.7, 0.4, 0.0,          1, 1, 1,    // Index:  7
+    0.7, 0.4, 0.0,          1, 1, 1,    // Index:  7
+    0.53, 0.4, 0.0,         1, 1, 1,    // Index:  8
+    0.53, 0.4, 0.0,         1, 1, 1,    // Index:  8
+    0.38, 0.15, 0.0,        1, 1, 1,    // Index:  9
+    0.38, 0.15, 0.0,        1, 1, 1,    // Index:  9
+    0.25, 0.15, 0.0,        1, 1, 1,    // Index:  10
+    0.25, 0.15, 0.0,        1, 1, 1,    // Index:  1
+    0.4, 0.4, 0.0,          1, 1, 1,    // Index:  11
+    0.4, 0.4, 0.0,          1, 1, 1,    // Index:  11
+    0.3, 0.4, 0.0,          1, 1, 1,    // Index:  12
+    0.3, 0.4, 0.0,          1, 1, 1,    // Index:  12
+    0.3, 0.5, 0.0,          1, 1, 1,    // Index:  13
+    0.3, 0.5, 0.0,          1, 1, 1,    // Index:  13
+    0.45, 0.5, 0.0,         1, 1, 1,    // Index:  14
+    0.45, 0.5, 0.0,         1, 1, 1,    // Index:  14
+    0.58, 0.7, 0.0,         1, 1, 1,    // Index:  15
+    0.25, 0.7, 0.0,         1, 1, 1,    // Index:  16
   ]
 
   var indices7 = [
-    0, 1, 2,     0, 2, 3,     // Face A
-    4, 5, 6,     4, 6, 7,     // Face B
-    8, 9, 10,    8, 10, 11,   // Face C
-    12, 13, 14,  12, 14, 15,  // Face D
-    16, 17, 18,  16, 18, 19,  // Face E
-    20, 21, 22,  20, 22, 23   // Face F     
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10, 11,
+    12, 13, 14,  12, 14, 15,
+    16, 17, 18,  16, 18, 19,
+    20, 21, 22,  20, 22, 23,
+    24, 25, 26,  24, 26, 27,
+    28, 29, 30,  28, 30, 31,
+  ];
+
+  var verticesN1 = [
+    // Char N Outer Front    // Black
+    -0.8, -0.8, 0.0,         0, 0, 0,    // Index:  0
+    -0.7, -0.8, 0.0,         0, 0, 0,    // Index:  1
+    -0.7, -0.15, 0.0,        0, 0, 0,    // Index:  2
+    -0.8, -0.15, 0.0,        0, 0, 0,    // Index:  3
+  ];
+
+  var indicesN1 = [
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10,
+  ];
+
+  var verticesN2 = [
+    // Char N Outer Front    // Black
+    -0.35, -0.8, 0.0,         0, 0, 0,    // Index:  0
+    -0.25, -0.8, 0.0,         0, 0, 0,    // Index:  1
+    -0.25, -0.15, 0.0,        0, 0, 0,    // Index:  2
+    -0.35, -0.15, 0.0,        0, 0, 0,    // Index:  3
+  ];
+
+  var indicesN2 = [
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10,
+  ];
+
+  var verticesN3 = [
+    // Char N Outer Front    // Black
+    -0.8, -0.15, 0.0,         0, 0, 0,    // Index:  0
+    -0.7, -0.15, 0.0,         0, 0, 0,    // Index:  1
+    -0.25, -0.8, 0.0,        0, 0, 0,    // Index:  2
+    -0.35, -0.8, 0.0,        0, 0, 0,    // Index:  3
+  ];
+
+  var indicesN3 = [
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10,
   ];
 
   var objects = [
@@ -65,7 +144,14 @@ function main() {
       name: '9',
       vertices: vertices9,
       indices: indices9,
-      length: 16,
+      length: 20,
+      type: gl.LINE_LOOP,
+    },
+    {
+      name: '9',
+      vertices: vertices91,
+      indices: indices91,
+      length: 6,
       type: gl.LINE_LOOP,
     },
     {
@@ -74,6 +160,27 @@ function main() {
       indices: indices7,
       length: 16,
       type: gl.LINE_LOOP,
+    },
+    {
+      name: 'N',
+      vertices: verticesN1,
+      indices: indicesN1,
+      length: 14,
+      type: gl.TRIANGLE_FAN,
+    },
+    {
+      name: 'N',
+      vertices: verticesN2,
+      indices: indicesN2,
+      length: 14,
+      type: gl.TRIANGLE_FAN,
+    },
+    {
+      name: 'N',
+      vertices: verticesN3,
+      indices: indicesN3,
+      length: 14,
+      type: gl.TRIANGLE_FAN,
     },
   ]
 
@@ -129,7 +236,11 @@ function main() {
   var horizontalDelta = 0.0;
   var verticalDelta = 0.0;
   var scaleDelta = 0.0;
-  var scaleSpeed = 0.0097;
+  var scaleSpeed = 0.05;
+  var freezeN = 0;
+  var freezeO = 0;
+  var thetaX = 0.0;
+  var thetaY = 0.0;
 
   // Variabel pointer ke GLSL
   var uModel = gl.getUniformLocation(shaderProgram, "uModel");
@@ -181,7 +292,7 @@ function main() {
     gl.drawElements(glType, indices.length - 11, gl.UNSIGNED_SHORT, 0);
   }
 
-  const animate9 = () =>{
+  function animate9(i) {
     var model = mat4.create();
 
     if (horizontalDelta >= (frameWidth/2) || horizontalDelta <= (-frameWidth/2+1)) {
@@ -196,10 +307,10 @@ function main() {
     gl.uniformMatrix4fv(uModel,false, model);
     gl.uniformMatrix4fv(uView, false, view);
     gl.uniformMatrix4fv(uProjection, false, perspective);
-    drawing(objects[0].vertices, objects[0].indices, 0, objects[0].length, objects[0].type);
+    drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
   }
 
-  const animate7 = () =>{
+  function animate7(i) {
     var model = mat4.create();
 
     if (scaleDelta >= 2 || scaleDelta <= -0.5) {
@@ -214,8 +325,58 @@ function main() {
     gl.uniformMatrix4fv(uModel,false, model);
     gl.uniformMatrix4fv(uView, false, view);
     gl.uniformMatrix4fv(uProjection, false, perspective);
-    drawing(objects[1].vertices, objects[1].indices, 0, objects[1].length, objects[1].type);
-}
+    drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
+  }
+
+  function onKeyPress(event) {
+    if (event.keyCode == 37) { // left arrow
+      freezeN = 1;
+    } else if (event.keyCode == 39) { // right arrow
+      freezeN = 2;
+    } else if (event.keyCode == 38) { // up arrow
+      freezeA = 1;
+    } else if (event.keyCode == 40) { // down arrow
+      freezeA = 2;
+    }
+  }
+
+  document.addEventListener("keydown", onKeyPress, false);
+
+  function animateN(i)  {
+    var modely = mat4.create();
+    mat4.rotateY(modely, modely, thetaY);
+
+    if (freezeN == 1) {
+      thetaY -= 0.01;
+    } else if (freezeN == 2) {
+      thetaY += 0.01;
+    }
+
+    var uModel = gl.getUniformLocation(shaderProgram, "uModel");
+    var uView = gl.getUniformLocation(shaderProgram, "uView");
+    var uProjection = gl.getUniformLocation(shaderProgram, "uProjection");
+    gl.uniformMatrix4fv(uModel, false, modely);
+    gl.uniformMatrix4fv(uView, false, view);
+    gl.uniformMatrix4fv(uProjection, false, perspective);
+    drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
+  }
+
+  function animateRotationN(i) {
+    var modelx = mat4.create();
+    mat4.rotateX(modelx, modelx, thetaX);
+    if (freezeO == 1) {
+      thetaX -= 0.05;
+    } else if (freezeO == 2) {
+      thetaX += 0.05;
+    }
+    var uModel = gl.getUniformLocation(shaderProgram, "uModel");
+    var uView = gl.getUniformLocation(shaderProgram, "uView");
+    var uProjection = gl.getUniformLocation(shaderProgram, "uProjection");
+    gl.uniformMatrix4fv(uModel, false, modelx);
+    gl.uniformMatrix4fv(uView, false, view);
+    gl.uniformMatrix4fv(uProjection, false, perspective);
+    drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
+  }
 
   // Kita mengajari GPU bagaimana caranya mengoleksi
   //  nilai posisi dari ARRAY_BUFFER
@@ -288,8 +449,12 @@ function main() {
       gl.uniformMatrix4fv(uView, false, view);
       gl.uniformMatrix4fv(uProjection, false, perspective);
       // gl.drawElements(gl.LINE_LOOP, indices.length, gl.UNSIGNED_SHORT, 0);
-      animate9();
-      animate7();
+      animate9(0);
+      animate9(1);
+      animate7(2);
+      animateN(3);
+      animateN(4);
+      animateN(5);
       requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
