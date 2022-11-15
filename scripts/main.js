@@ -2,29 +2,6 @@ function main() {
   var kanvas = document.getElementById("kanvas");
   var gl = kanvas.getContext("webgl");
 
-  var state = {
-    gl: null,
-    program: "render",
-    ui: {
-      pressedKeys: {},
-    },
-    animation: {},
-    app: {
-      doAnimate: true,
-      eye: {
-        x: 0.0,
-        y: 0.0,
-        z: 7.5,
-      },
-      objects: [],
-    },
-  };
-
-  state.pm = mat4.create();
-
-  mat4.perspective(state.pm, (5 * Math.PI) / 180, 1.0, 0.5, 50.0);
-  mat4.lookAt(mat4.create(), vec3.fromValues(state.app.eye.x, state.app.eye.y, state.app.eye.z), vec3.fromValues(0, 0, 0), vec3.fromValues(0, 1, 0));
-
   var vertices = [
     // Num 9 Outer Front
     -0.35, 0.4, 1.0,
