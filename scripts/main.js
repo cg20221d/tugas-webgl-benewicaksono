@@ -127,8 +127,8 @@ function main() {
 
   var verticesN3 = [
     // Char N Outer Front    // Black
-    -0.8, -0.15, 0.0,         0, 0, 0,    // Index:  0
-    -0.7, -0.15, 0.0,         0, 0, 0,    // Index:  1
+    -0.8, -0.15, 0.0,        0, 0, 0,    // Index:  0
+    -0.7, -0.15, 0.0,        0, 0, 0,    // Index:  1
     -0.25, -0.8, 0.0,        0, 0, 0,    // Index:  2
     -0.35, -0.8, 0.0,        0, 0, 0,    // Index:  3
   ];
@@ -137,6 +137,25 @@ function main() {
     0, 1, 2,     0, 2, 3,
     4, 5, 6,     4, 6, 7,
     8, 9, 10,    8, 10,
+  ];
+
+  var verticesO1 = [
+    // Char O Outer Front     // Black
+    0.25, -0.25, 0.0,         0, 0, 0,    // Index:  0
+    0.35, -0.15, 0.0,         0, 0, 0,    // Index:  1
+    0.7, -0.15, 0.0,          0, 0, 0,    // Index:  1
+    0.8, -0.25, 0.0,          0, 0, 0,    // Index:  1
+    0.8, -0.7, 0.0,           0, 0, 0,    // Index:  1
+    0.7, -0.8, 0.0,           0, 0, 0,    // Index:  1
+    0.35, -0.8, 0.0,          0, 0, 0,    // Index:  1
+    0.25, -0.7, 0.0,          0, 0, 0,    // Index:  1
+  ];
+
+  var indicesO1 = [
+    0, 1, 2,     0, 2, 3,
+    4, 5, 6,     4, 6, 7,
+    8, 9, 10,    8, 10, 11,
+    11, 12, 13,  11, 13,
   ];
 
   var objects = [
@@ -162,24 +181,31 @@ function main() {
       type: gl.LINE_LOOP,
     },
     {
-      name: 'N',
+      name: 'N1',
       vertices: verticesN1,
       indices: indicesN1,
       length: 14,
       type: gl.TRIANGLE_FAN,
     },
     {
-      name: 'N',
+      name: 'N2',
       vertices: verticesN2,
       indices: indicesN2,
       length: 14,
       type: gl.TRIANGLE_FAN,
     },
     {
-      name: 'N',
+      name: 'N3',
       vertices: verticesN3,
       indices: indicesN3,
       length: 14,
+      type: gl.TRIANGLE_FAN,
+    },
+    {
+      name: 'O1',
+      vertices: verticesO1,
+      indices: indicesO1,
+      length: 7,
       type: gl.TRIANGLE_FAN,
     },
   ]
@@ -194,14 +220,14 @@ function main() {
 
   // Vertex shader
   var vertexShaderCode =  `
-  attribute vec3 aPosition;   // Sebelumnya vec2, makanya tidak tergambar kubus :D
+  attribute vec3 aPosition;
   attribute vec3 aColor;
   uniform mat4 uModel;
   uniform mat4 uView;
   uniform mat4 uProjection;
   varying vec3 vColor;
   void main() {
-      gl_Position = uProjection * uView * uModel * vec4(aPosition, 1.0);
+      gl_Position = uProjection * uView * uModel * vec4(aPosition, 0.5);
       vColor = aColor;
   }
   `;
@@ -328,19 +354,32 @@ function main() {
     drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
   }
 
-  function onKeyPress(event) {
+  function onKeyDown(event) {
     if (event.keyCode == 37) { // left arrow
       freezeN = 1;
     } else if (event.keyCode == 39) { // right arrow
       freezeN = 2;
     } else if (event.keyCode == 38) { // up arrow
-      freezeA = 1;
+      freezeO = 1;
     } else if (event.keyCode == 40) { // down arrow
-      freezeA = 2;
+      freezeO = 2;
     }
   }
 
-  document.addEventListener("keydown", onKeyPress, false);
+  function onKeyUp(event) {
+    if (event.keyCode == 37) {
+      freezeN = 0;
+    } else if (event.keyCode == 39) {
+      freezeN = 0;
+    } else if (event.keyCode == 38) {
+      freezeO = 0;
+    } else if (event.keyCode == 40) {
+      freezeO = 0;
+    }
+  }
+
+  document.addEventListener("keydown", onKeyDown);
+  document.addEventListener("keyup", onKeyUp)
 
   function animateN(i)  {
     var modely = mat4.create();
@@ -361,7 +400,7 @@ function main() {
     drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
   }
 
-  function animateRotationN(i) {
+  function animateO(i) {
     var modelx = mat4.create();
     mat4.rotateX(modelx, modelx, thetaX);
     if (freezeO == 1) {
@@ -369,6 +408,7 @@ function main() {
     } else if (freezeO == 2) {
       thetaX += 0.05;
     }
+
     var uModel = gl.getUniformLocation(shaderProgram, "uModel");
     var uView = gl.getUniformLocation(shaderProgram, "uView");
     var uProjection = gl.getUniformLocation(shaderProgram, "uProjection");
@@ -427,27 +467,27 @@ function main() {
       gl.clearColor(1.0,      0.65,    0.0,    1.0);  // Oranye
       //            Merah     Hijau   Biru    Transparansi
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      if (!freeze) {
-          theta += 0.005;
-      }
-      horizontalDelta += horizontalSpeed;
-      verticalDelta -= verticalSpeed;
-      var model = mat4.create(); // Membuat matriks identitas
-      mat4.translate(
-          model, model, [horizontalDelta, verticalDelta, 0.0]
-      );
-      mat4.rotateX(
-          model, model, theta
-      );
-      mat4.rotateY(
-          model, model, theta
-      );
-      mat4.rotateZ(
-          model, model, theta
-      );
-      gl.uniformMatrix4fv(uModel, false, model);
-      gl.uniformMatrix4fv(uView, false, view);
-      gl.uniformMatrix4fv(uProjection, false, perspective);
+      // if (!freeze) {
+      //     theta += 0.005;
+      // }
+      // horizontalDelta += horizontalSpeed;
+      // verticalDelta -= verticalSpeed;
+      // var model = mat4.create(); // Membuat matriks identitas
+      // mat4.translate(
+      //     model, model, [horizontalDelta, verticalDelta, 0.0]
+      // );
+      // mat4.rotateX(
+      //     model, model, theta
+      // );
+      // mat4.rotateY(
+      //     model, model, theta
+      // );
+      // mat4.rotateZ(
+      //     model, model, theta
+      // );
+      // gl.uniformMatrix4fv(uModel, false, model);
+      // gl.uniformMatrix4fv(uView, false, view);
+      // gl.uniformMatrix4fv(uProjection, false, perspective);
       // gl.drawElements(gl.LINE_LOOP, indices.length, gl.UNSIGNED_SHORT, 0);
       animate9(0);
       animate9(1);
@@ -455,6 +495,7 @@ function main() {
       animateN(3);
       animateN(4);
       animateN(5);
+      animateO(6);
       requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
