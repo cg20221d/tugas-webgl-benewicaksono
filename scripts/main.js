@@ -103,26 +103,50 @@ function main() {
     -0.7, -0.8, 0.0,         0, 0, 0,    // Index:  1
     -0.7, -0.15, 0.0,        0, 0, 0,    // Index:  2
     -0.8, -0.15, 0.0,        0, 0, 0,    // Index:  3
+
+    // Char N Outer Back     // White
+    -0.8, -0.8, -0.2,        1, 1, 1,    // Index:  4
+    -0.7, -0.8, -0.2,        1, 1, 1,    // Index:  5
+    -0.7, -0.15, -0.2,       1, 1, 1,    // Index:  6
+    -0.8, -0.15, -0.2,       1, 1, 1,    // Index:  7
   ];
 
   var indicesN1 = [
+    // Char N Outer Front
     0, 1, 2,     0, 2, 3,
     4, 5, 6,     4, 6, 7,
     8, 9, 10,    8, 10,
+
+    // Char N Outer Back
+    11, 12, 13,  11, 13, 14,
+    15, 16, 17,  15, 18, 19,
+    20, 21, 22,  20, 22,
   ];
 
   var verticesN2 = [
-    // Char N Outer Front    // Black
+    // Char N Outer Front     // Black
     -0.35, -0.8, 0.0,         0, 0, 0,    // Index:  0
     -0.25, -0.8, 0.0,         0, 0, 0,    // Index:  1
     -0.25, -0.15, 0.0,        0, 0, 0,    // Index:  2
     -0.35, -0.15, 0.0,        0, 0, 0,    // Index:  3
+
+    // Char N Outer Back      // White
+    -0.35, -0.8, -0.2,         1, 1, 1,    // Index:  4
+    -0.25, -0.8, -0.2,         1, 1, 1,    // Index:  5
+    -0.25, -0.15, -0.2,        1, 1, 1,    // Index:  6
+    -0.35, -0.15, -0.2,        1, 1, 1,    // Index:  7
   ];
 
   var indicesN2 = [
+    // Char N Outer Front
     0, 1, 2,     0, 2, 3,
     4, 5, 6,     4, 6, 7,
     8, 9, 10,    8, 10,
+
+    // Char N Outer Back
+    11, 12, 13,  11, 13, 14,
+    15, 16, 17,  15, 18, 19,
+    20, 21, 22,  20, 22
   ];
 
   var verticesN3 = [
@@ -131,31 +155,81 @@ function main() {
     -0.7, -0.15, 0.0,        0, 0, 0,    // Index:  1
     -0.25, -0.8, 0.0,        0, 0, 0,    // Index:  2
     -0.35, -0.8, 0.0,        0, 0, 0,    // Index:  3
+
+    // Char N Outer Back     // White
+    -0.8, -0.15, -0.2,        1, 1, 1,    // Index:  4
+    -0.7, -0.15, -0.2,        1, 1, 1,    // Index:  5
+    -0.25, -0.8, -0.2,        1, 1, 1,    // Index:  6
+    -0.35, -0.8, -0.2,        1, 1, 1,    // Index:  7
   ];
 
   var indicesN3 = [
+    // Char N Outer Front
     0, 1, 2,     0, 2, 3,
     4, 5, 6,     4, 6, 7,
     8, 9, 10,    8, 10,
+
+    // Char N Outer Back
+    11, 12, 13,  11, 13, 14,
+    15, 16, 17,  15, 18, 19,
+    20, 21, 22,  20, 22
   ];
 
-  var verticesO1 = [
+  var verticesO = [
     // Char O Outer Front     // Black
     0.25, -0.25, 0.0,         0, 0, 0,    // Index:  0
     0.35, -0.15, 0.0,         0, 0, 0,    // Index:  1
-    0.7, -0.15, 0.0,          0, 0, 0,    // Index:  1
-    0.8, -0.25, 0.0,          0, 0, 0,    // Index:  1
-    0.8, -0.7, 0.0,           0, 0, 0,    // Index:  1
-    0.7, -0.8, 0.0,           0, 0, 0,    // Index:  1
-    0.35, -0.8, 0.0,          0, 0, 0,    // Index:  1
-    0.25, -0.7, 0.0,          0, 0, 0,    // Index:  1
+    0.7, -0.15, 0.0,          0, 0, 0,    // Index:  2
+    0.8, -0.25, 0.0,          0, 0, 0,    // Index:  3
+    0.8, -0.7, 0.0,           0, 0, 0,    // Index:  4
+    0.7, -0.7, 0.0,           0, 0, 0,    // Index:  5
+    0.7, -0.25, 0.0,          0, 0, 0,    // Index:  6
+    0.8, -0.25, 0.0,          0, 0, 0,    // Index:  7
+    0.8, -0.7, 0.0,           0, 0, 0,    // Index:  8
+    0.7, -0.8, 0.0,           0, 0, 0,    // Index:  9
+    0.35, -0.8, 0.0,          0, 0, 0,    // Index:  10
+    0.25, -0.7, 0.0,          0, 0, 0,    // Index:  11
+    0.35, -0.7, 0.0,          0, 0, 0,    // Index:  12
+    0.35, -0.25, 0.0,         0, 0, 0,    // Index:  13
+    0.25, -0.25, 0.0,         0, 0, 0,    // Index:  14
+
+    // Char O Outer Front     // White
+    0.25, -0.25, -0.2,        1, 1, 1,    // Index:  15
+    0.35, -0.15, -0.2,        1, 1, 1,    // Index:  16
+    0.7, -0.15, -0.2,         1, 1, 1,    // Index:  17
+    0.8, -0.25, -0.2,         1, 1, 1,    // Index:  18
+    0.8, -0.7, -0.2,          1, 1, 1,    // Index:  19
+    0.7, -0.7, -0.2,          1, 1, 1,    // Index:  20
+    0.7, -0.25, -0.2,         1, 1, 1,    // Index:  21
+    0.8, -0.25, -0.2,         1, 1, 1,    // Index:  22
+    0.8, -0.7, -0.2,          1, 1, 1,    // Index:  23
+    0.7, -0.8, -0.2,          1, 1, 1,    // Index:  24
+    0.35, -0.8, -0.2,         1, 1, 1,    // Index:  25
+    0.25, -0.7, -0.2,         1, 1, 1,    // Index:  26
+    0.35, -0.7, -0.2,         1, 1, 1,    // Index:  27
+    0.35, -0.25, -0.2,        1, 1, 1,    // Index:  28
+    0.25, -0.25, -0.2,        1, 1, 1,    // Index:  29
+    0.35, -0.25, -0.2,        1, 1, 1,    // Index:  30
+    0.35, -0.7, -0.2,         1, 1, 1,    // Index:  31
+    0.25, -0.7, -0.2,         1, 1, 1,    // Index:  32
+    0.25, -0.25, -0.2,        1, 1, 1,    // Index:  33
   ];
 
-  var indicesO1 = [
+  var indicesO = [
+    // Char O Outer Front
     0, 1, 2,     0, 2, 3,
     4, 5, 6,     4, 6, 7,
     8, 9, 10,    8, 10, 11,
-    11, 12, 13,  11, 13,
+    11, 12, 13,  11, 13, 14,
+    15, 16, 17,  15, 17, 18,
+    19, 20, 21,  19, 21, 22,
+
+    // Char O Outer Back
+    23, 24, 25,  23, 25, 26,
+    27, 28, 29,  27, 29, 30,
+    31, 32, 33,  31, 33, 34,
+    35, 36, 37,  35, 37, 38,
+    39, 40,
   ];
 
   var objects = [
@@ -185,28 +259,28 @@ function main() {
       vertices: verticesN1,
       indices: indicesN1,
       length: 14,
-      type: gl.TRIANGLE_FAN,
+      type: gl.TRIANGLES,
     },
     {
       name: 'N2',
       vertices: verticesN2,
       indices: indicesN2,
       length: 14,
-      type: gl.TRIANGLE_FAN,
+      type: gl.TRIANGLES,
     },
     {
       name: 'N3',
       vertices: verticesN3,
       indices: indicesN3,
       length: 14,
-      type: gl.TRIANGLE_FAN,
+      type: gl.TRIANGLES,
     },
     {
       name: 'O1',
-      vertices: verticesO1,
-      indices: indicesO1,
+      vertices: verticesO,
+      indices: indicesO,
       length: 7,
-      type: gl.TRIANGLE_FAN,
+      type: gl.TRIANGLES,
     },
   ]
 
