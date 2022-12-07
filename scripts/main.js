@@ -318,6 +318,49 @@ function main() {
     39, 40,
   ];
 
+  var verticesCube = [
+    1.0, 1.0, 1.0,    1.0, 1.0, 1.0,
+    -1.0, 1.0, 1.0,   1.0, 1.0, 1.0,
+    -1.0,-1.0, 1.0,   1.0, 1.0, 1.0,
+     1.0,-1.0, 1.0,   1.0, 1.0, 1.0,
+
+     1.0, 1.0, 1.0,   1.0, 1.0, 1.0,
+     1.0,-1.0, 1.0,   1.0, 1.0, 1.0,
+     1.0,-1.0,-1.0,   1.0, 1.0, 1.0,
+     1.0, 1.0,-1.0,   1.0, 1.0, 1.0,
+
+     1.0, 1.0, 1.0,   1.0, 1.0, 1.0,
+     1.0, 1.0,-1.0,   1.0, 1.0, 1.0,
+    -1.0, 1.0,-1.0,   1.0, 1.0, 1.0,
+    -1.0, 1.0, 1.0,   1.0, 1.0, 1.0,
+
+    -1.0, 1.0, 1.0,   1.0, 1.0, 1.0,
+    -1.0, 1.0,-1.0,   1.0, 1.0, 1.0,
+    -1.0,-1.0,-1.0,   1.0, 1.0, 1.0,
+    -1.0,-1.0, 1.0,   1.0, 1.0, 1.0,
+
+    -1.0,-1.0,-1.0,   1.0, 1.0, 1.0,
+     1.0,-1.0,-1.0,   1.0, 1.0, 1.0,
+     1.0,-1.0, 1.0,   1.0, 1.0, 1.0,
+    -1.0,-1.0, 1.0,   1.0, 1.0, 1.0,
+
+     1.0,-1.0,-1.0,   1.0, 1.0, 1.0,
+    -1.0,-1.0,-1.0,   1.0, 1.0, 1.0,
+    -1.0, 1.0,-1.0,   1.0, 1.0, 1.0,
+     1.0, 1.0,-1.0,   1.0, 1.0, 1.0,
+  ];
+
+  var indicesCube = [
+    0, 1, 2,   0, 2, 3,
+    4, 5, 6,   4, 6, 7,
+    8, 9,10,   8,10,11,
+    12,13,14,  12,14,15,
+    16,17,18,  16,18,19,
+    20,21,22,  20,22,23,
+    24, 25, 26, 24, 26, 27,
+    28, 29, 30, 28, 30, 31
+  ];
+
   var objects = [
     {
       name: '9',
@@ -368,6 +411,13 @@ function main() {
       length: 7,
       type: gl.TRIANGLES,
     },
+    {
+      name: 'Cube',
+      vertices: verticesCube,
+      indices: indicesCube,
+      length: 12,
+      type: gl.TRIANGLES,
+    }
   ]
 
   // var buffer = gl.createBuffer();
@@ -427,6 +477,7 @@ function main() {
   var freezeO = 0;
   var thetaX = 0.0;
   var thetaY = 0.0;
+  var thetaZ = -20;
 
   // Variabel pointer ke GLSL
   var uModel = gl.getUniformLocation(shaderProgram, "uModel");
@@ -447,7 +498,7 @@ function main() {
   
   mat4.perspective(perspective, Math.PI/3, 1.0, 0.5, 50);
 
-  function drawing (vertices, indices, start=0, end, glType=gl.LINE_LOOP) { 
+  function drawing (vertices, indices, start=0, end, glType) { 
     const buffer = gl.createBuffer();
     const indexBuffer = gl.createBuffer();
 
@@ -514,6 +565,9 @@ function main() {
     drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
   }
 
+  var freezeC = 0;
+  var freezeC1 = 0;
+
   function onKeyDown(event) {
     if (event.keyCode == 37) { // left arrow
       freezeN = 1;
@@ -523,6 +577,14 @@ function main() {
       freezeO = 1;
     } else if (event.keyCode == 40) { // down arrow
       freezeO = 2;
+    } else if (event.keyCode == 74) {
+      freezeC = 1;
+    } else if (event.keyCode == 76) {
+      freezeC = 2;
+    } else if (event.keyCode == 73) {
+      freezeC1 = 1;
+    }  else if (event.keyCode == 75) {
+      freezeC1 = 2;
     }
   }
 
@@ -535,6 +597,14 @@ function main() {
       freezeO = 0;
     } else if (event.keyCode == 40) {
       freezeO = 0;
+    } else if (event.keyCode == 74) {
+      freezeC = 0;
+    } else if (event.keyCode == 76) {
+      freezeC = 0;
+    } else if (event.keyCode == 73) {
+      freezeC1 = 0;
+    }  else if (event.keyCode == 75) {
+      freezeC1 = 0;
     }
   }
 
@@ -568,6 +638,37 @@ function main() {
     } else if (freezeO == 2) {
       thetaX += 0.05;
     }
+
+    var uModel = gl.getUniformLocation(shaderProgram, "uModel");
+    var uView = gl.getUniformLocation(shaderProgram, "uView");
+    var uProjection = gl.getUniformLocation(shaderProgram, "uProjection");
+    gl.uniformMatrix4fv(uModel, false, modelx);
+    gl.uniformMatrix4fv(uView, false, view);
+    gl.uniformMatrix4fv(uProjection, false, perspective);
+    drawing(objects[i].vertices, objects[i].indices, 0, objects[i].length, objects[i].type);
+  }
+
+  function animateCube(i) {
+    var modelx = mat4.create();
+    mat4.translate(modelx, modelx, [0, 0, thetaZ]);
+
+    if (freezeC == 1) {
+      thetaX -= 0.05;
+    } else if (freezeC == 2) {
+      thetaX += 0.05;
+    }
+
+    if (freezeC1 == 1) {
+      thetaZ += 0.05;
+    } else if (freezeC1 == 2) {
+      thetaZ -= 0.05;
+    }
+
+    if (thetaX >= (frameWidth+5) || thetaX <= (-frameWidth-5)) {
+      freezeC = 0;
+  }
+
+    mat4.translate(modelx, modelx, [thetaX, 0, 0]);
 
     var uModel = gl.getUniformLocation(shaderProgram, "uModel");
     var uView = gl.getUniformLocation(shaderProgram, "uView");
@@ -649,13 +750,14 @@ function main() {
       // gl.uniformMatrix4fv(uView, false, view);
       // gl.uniformMatrix4fv(uProjection, false, perspective);
       // gl.drawElements(gl.LINE_LOOP, indices.length, gl.UNSIGNED_SHORT, 0);
-      animate9(0);
-      animate9(1);
+      // animate9(0);
+      // animate9(1);
       animate7(2);
       animateN(3);
       animateN(4);
       animateN(5);
-      animateO(6);
+      // animateO(6);
+      animateCube(7);
       requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
